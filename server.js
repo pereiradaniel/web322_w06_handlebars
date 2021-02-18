@@ -1,8 +1,10 @@
-var express = require("express");
-var app = express();
-var path = require("path");
+const express = require("express");
 const exphbs = require('express-handlebars');
+var path = require("path");
 
+const app = express();
+
+// Register handlebars as the rendering engine for views.
 app.engine('.hbs', exphbs({ extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
