@@ -1,6 +1,10 @@
 var express = require("express");
 var app = express();
 var path = require("path");
+const exphbs = require('express-handlebars');
+
+app.engine('.hbs', exphbs({ extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 var HTTP_PORT = process.env.PORT || 8080;
 
@@ -29,30 +33,10 @@ app.get("/viewData", function(req,res){
         company: "Scotiabank"
     };
 
-    var htmlString = "<!doctype html>" + 
-                    "<html>" +
-                        "<head>" + 
-                            "<title>" + "View Data" + "</title>" +
-                        "</head>" +
-                        "<body>" + 
-                            "<table border='1'>" + 
-                                "<tr>" + 
-                                    "<th>" + "Name" + "</th>" + 
-                                    "<th>" + "Age" + "</th>" + 
-                                    "<th>" + "Occupation" + "</th>" + 
-                                    "<th>" + "Company" + "</th>" + 
-                                "</tr>" + 
-                                "<tr>" + 
-                                    "<td>" + someData.name + "</td>" + 
-                                    "<td>" + someData.age + "</td>" + 
-                                    "<td>" + someData.occupation + "</td>" + 
-                                    "<td>" + someData.company + "</td>" + 
-                                "</tr>" + 
-                            "</table>" + 
-                        "</body>" + 
-                    "</html>";
-
-    res.send(htmlString);
+    res.render('viewData', {
+        data: someData,
+        layout: false // do not use the default Layout (main.hbs)
+    });
 });
 
 // setup http server to listen on HTTP_PORT
