@@ -33,7 +33,8 @@ app.get("/viewData", function(req,res){
         age: 23,
         occupation: "developer",
         company: "Scotiabank",
-        visible: false
+        visible: true,
+        contract: true
     };
 
     res.render('viewData', {

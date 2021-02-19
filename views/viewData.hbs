@@ -24,6 +24,11 @@
                 <td colspan="4">User: '{{data.name}}' has hidden their information</td>
             </tr>
             {{/if}}
+            {{#unless data.contract}}
+            <tr>
+                <td colspan="4">Full-Time Employee</td>
+            </tr>
+            {{/unless}}
         </table>
     </body>
 </html>
