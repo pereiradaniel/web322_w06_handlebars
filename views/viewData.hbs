@@ -7,6 +7,7 @@
     <body>
         <table border='1'>
             <tr>
+                <th>Index</th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Occupation</th>
@@ -14,6 +15,7 @@
             </tr>
             {{#each data}}
                 <tr>
+                    <td>{{@index}}</td>
                     <td>{{name}}</td>
                     <td>{{age}}</td>
                     <td>{{occupation}}</td>
