@@ -12,12 +12,18 @@
                 <th>Occupation</th>
                 <th>Company</th>
             </tr>
+            {{#if data.visible}}
             <tr>
                 <td>{{data.name}}</td>
                 <td>{{data.age}}</td>
                 <td>{{data.occupation}}</td>
                 <td>{{data.company}}</td>
             </tr>
+            {{else}}
+            <tr>
+                <td colspan="4">User: '{{data.name}}' has hidden their information</td>
+            </tr>
+            {{/if}}
         </table>
     </body>
 </html>
