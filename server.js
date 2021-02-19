@@ -7,6 +7,7 @@ const app = express();
 // Register handlebars as the rendering engine for views.
 app.engine('.hbs', exphbs({
     extname: '.hbs',
+    defaultLayout: 'main',
     helpers: {
         strong: function(options){
             return '<strong>' + options.fn(this) + '</strong>';

@@ -1,34 +1,26 @@
-<!doctype html>
-<html>
-    <head>
-        <title>View Data</title>
-    </head>
-    {{> welcome data.[0]}}
-    <body>
-        <table border='1'>
+{{> welcome data.[0]}}
+    <table border='1'>
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Occupation</th>
+            <th>Company</th>
+        </tr>
+        {{#each data}}
             <tr>
-                <th>Index</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Occupation</th>
-                <th>Company</th>
+                <td>{{@index}}</td>
+                <td>{{#strong}}{{name}}{{/strong}}</td>
+                <td>{{age}}</td>
+                <td>{{occupation}}</td>
+                <td>{{company}}</td>
             </tr>
-            {{#each data}}
-                <tr>
-                    <td>{{@index}}</td>
-                    <td>{{#strong}}{{name}}{{/strong}}</td>
-                    <td>{{age}}</td>
-                    <td>{{occupation}}</td>
-                    <td>{{company}}</td>
-                </tr>
-            {{else}}
-                <tr>
-                    <td colspan="5">No Data Available</td>
-                </tr>
-            {{/each}}
-        </table>
-    {{#list data}}
-    Name: {{name}} Age: {{age}} Occupation: {{occupation}} Company: {{company}}
-    {{/list}}
-    </body>
-</html>
+        {{else}}
+            <tr>
+                <td colspan="5">No Data Available</td>
+            </tr>
+        {{/each}}
+    </table>
+{{#list data}}
+Name: {{name}} Age: {{age}} Occupation: {{occupation}} Company: {{company}}
+{{/list}}
