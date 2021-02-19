@@ -28,15 +28,18 @@ app.get("/about", function(req,res){
 // send json data and display in html
 app.get("/viewData", function(req,res){
 
-    var someData = {
+    var someData = [{
         name: "John",
         age: 23,
         occupation: "developer",
-        company: "Scotiabank",
-        visible: true,
-        contract: true
-    };
-
+        company: "Scotiabank"
+    },
+    {
+        name: "Sarah",
+        age: 32,
+        occupation: "manager",
+        company: "TD"
+    }];
     res.render('viewData', {
         data: someData,
         layout: false // do not use the default Layout (main.hbs)
