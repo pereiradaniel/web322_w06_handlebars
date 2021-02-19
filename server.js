@@ -5,7 +5,23 @@ var path = require("path");
 const app = express();
 
 // Register handlebars as the rendering engine for views.
-app.engine('.hbs', exphbs({ extname: '.hbs'}));
+app.engine('.hbs', exphbs({
+    extname: '.hbs',
+    helpers: {
+        strong: function(options){
+            return '<strong>' + options.fn(this) + '</strong>';
+        },
+        list: function(context, options){
+            var ret = "<ul>";
+
+            for (var i = 0; i < context.length; i++) {
+                ret = ret + "<li>" + options.fn(context[i]) + "</li>";
+            }
+
+            return ret + "</ul>";
+        }
+    }
+}));
 app.set('view engine', '.hbs');
 
 var HTTP_PORT = process.env.PORT || 8080;
